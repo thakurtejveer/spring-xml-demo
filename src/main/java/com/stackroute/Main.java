@@ -1,8 +1,10 @@
 package com.stackroute;
 
 import com.stackroute.domain.Movie;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.core.io.ClassPathResource;
 
 /*Create a Maven project and add required dependency of spring-context 5.1.4.RELEASE  ^
         Create a Main class in package com.stackroute and two Spring Beans – Movie, and Actor in
@@ -24,5 +26,9 @@ public class Main
         ApplicationContext context=new ClassPathXmlApplicationContext("bean.xml");
         Movie mov=context.getBean("movie",Movie.class);
         mov.printActor();
+        XmlBeanFactory factory= new XmlBeanFactory(new ClassPathResource("bean.xml"));
+        Movie movi=factory.getBean("movie", Movie.class);
+        //Movie movi=(Movie)factory.getBean("movie"); // // we can do this way also//
+        movi.printActor();
     }
 }

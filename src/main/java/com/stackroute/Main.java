@@ -24,11 +24,13 @@ public class Main
     public static void main( String[] args )
     {
         ApplicationContext context=new ClassPathXmlApplicationContext("bean.xml");
-        Movie mov=context.getBean("movie",Movie.class);
-        mov.printActor();
-        XmlBeanFactory factory= new XmlBeanFactory(new ClassPathResource("bean.xml"));
-        Movie movi=factory.getBean("movie", Movie.class);
-        //Movie movi=(Movie)factory.getBean("movie"); // // we can do this way also//
-        movi.printActor();
+        Movie movie1=context.getBean("movie",Movie.class);
+        movie1.printActor();
+        Movie movie2=context.getBean("movie",Movie.class);
+        System.out.println(movie1==movie2);
+//        XmlBeanFactory factory= new XmlBeanFactory(new ClassPathResource("bean.xml"));
+//        Movie movi=factory.getBean("movie", Movie.class);
+//        //Movie movi=(Movie)factory.getBean("movie"); // // we can do this way also//
+//        movi.printActor();
     }
 }
